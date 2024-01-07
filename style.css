@@ -1,31 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
 
 *,
-*::before,
-*::after {
+*::after,
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;    
+    font-size: 14px;
 }
 
 body {
+ 
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     min-height: 100vh;
-    /* background-color: #131313; */
-    background-color: darkslategrey;
-    color: #fff;
+    color: #fff; 
+    background-color: #131313;   
 }
 
 .card {
-    min-width: 320px;
-    min-height: 450px;                  /*TODO    подумать о минимальной высоте*/
+    width: 320px;
+    min-height: 450px;
     background-color: #232323;
     border-radius: 20px;
-    position: relative;    
+    position: relative;
     overflow: hidden;
 }
 
@@ -42,45 +42,53 @@ body {
     overflow: hidden;
 }
 
-.card::before {
-    content: '';
-    position: absolute;
+.card::before {    
+    content: " ";
+    position: absolute;    
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #9bdc28;
     clip-path: circle(150px at 80% 20%);
-    /*clip-path: circle(300px at 80% -20%);*//*TODO*/
+    background-color: #9BDC28;
+    /* top: -60px;
+    left: 105px;
+    width: 300px;
+    height: 300px;   Its also possible but circle only 150px*/
     transition: 0.5s ease-out;
-    z-index: 2;
+    z-index: 0;   
 }
 
 .card:hover::before {
     clip-path: circle(300px at 80% -20%);
+    /* clip-path: circle(300px);
+    top: -390px;
+    left: -45px;
+    width: 600px;
+    height: 600px;     It`s also possibile */     
 }
 
-.card::after{
-    content: 'Nike';
+.card::after {    
+    content: "Nike";
     position: absolute;
     top: 30%;
-    left: -20%;
-    font-size: 12em;
+    left: 50%;    
+    font-size: 192px;     /*12em*/
     font-style: italic;
     font-weight: 800;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.04); 
     z-index: 0;
-    color: rgba(255, 255, 255, 0.04);
 }
 
 .card__image {
-    position: relative;
-    /* top: 50%;   */
     padding-left: 25px;
     padding-top: 155px;
-   /* padding-top: 40px;*/ /*TODO*/
-    z-index: 5;
-    /* background-color: aqua; */
-    transition: 0.5s;
+    transition: all 1s ease-in;
+}
+
+.card:hover .card__image {
+    padding-top: 40px;
 }
 
 .card__image-boot {
@@ -89,30 +97,26 @@ body {
     transform: rotate(-25deg);
 }
 
-.card:hover .card__image{
-    padding-top: 40px;
-    
-}
-
 .card__content {
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
     position: absolute;
-    bottom: 0;
+    bottom: 0;    
     width: 100%;
-    height: 100px; 
-    z-index: 20;
-    transition: 1s;
+    height: 100px;
+    transition: all 1s ease-in;
+    z-index: 1;          
 }
 
-.card:hover .card__content {
+.card:hover .card__content{
     height: 210px;
-} 
+    opacity: 1;  
+}
 
 .card__subtitle {
-    color: #FFF;
+    color: #FFFEFE;
+    text-align: center;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -122,61 +126,64 @@ body {
 .card__content-color {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    align-items: center; 
+    padding-top: 8px;
+    padding-bottom: 8px;
     opacity: 0;
     visibility: hidden;
+    transition: all 1s ease-in;
 }
 
-.card:hover .card__content-size {
+.card:hover .card__content-size,
+.card:hover .card__content-color{
     opacity: 1;
     visibility: visible;    
     transition-delay: 0.5s;
 }
- 
-.card:hover .card__content-color {
-    opacity: 1;
-    visibility: visible;    
-    transition-delay: 0.6s;
-}
+
 
 .card__title-size,
 .card__title-color {
-    font-size: 14px;
+    text-align: center;
     font-weight: 300;
-    text-transform: uppercase;
     letter-spacing: 2px;
+    text-transform: uppercase;
     padding-right: 10px;
+    line-height: 21px;
 }
 
-.card__button-size{
-    width: 26px;
-    height: 26px;
-    border-radius: 4px;
-    background-color: #FFF;
-    border: none;
-    margin: 0px 5px;
-    padding: 0;
-    font-size: 14px;
+.card__buttons {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card__button-size {
+    height: 26px;
+    width: 26px;    
+    display: flex;
     align-items: center;    
-    transition: 0.5s;
+    justify-content: center;
+    margin: 0px 5px;
+    border: none;     
+    border-radius: 4px;   
+    background: #FFF;    
+    line-height: 26px;
 }
 
-.card__button-size:hover{  
-    background-color: #9bdc28;
+.card__button-size:hover {
+    background-color: #9BDC28;
+    cursor: pointer;
 }
 
-.card__button-color{
+.card__button-color {
     width: 20px;
     height: 20px;
-    border: none;
     border-radius: 50%;
-    box-sizing: border-box;
-    background-color: #9bdc28;
     margin: 0px 5px;
+    border: none;
+}
+
+.card__button-color:hover {
     cursor: pointer;
 }
 
@@ -194,21 +201,28 @@ body {
 
 .card__button {
     border-radius: 4px;
-    background-color: #fff;
-    padding: 10px 20px;
+    background-color: #ffffff;
+    opacity: 0;
+    padding: 10px 20px;    
     text-decoration: none;
     color: #111;
-    cursor: pointer;
-    margin-top: 10px;
-    font-weight: 600;
-    opacity: 0;   
-    transform: translateY(50px);
-    transition: 0.5s;  
+    margin-top: 10px; 
+    font-size: 16px; 
+    font-weight: 600;  
+    transform: translateY(50px);  /*Otherwise       margin-top: 60px;  */
+    transition: all 0.7s ease-in;
 }
-
+/* .card__button:hover { 
+     cursor: pointer;     TODO 
+}*/
 
 .card:hover .card__button {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(0px);   /*Otherwise    margin-top: 10px; */
     transition-delay: 0.75s;
+}
+
+.card:active .card__button {
+    background-color: #9bdc28;
+    transition-delay: 0s;
 }
