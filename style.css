@@ -59,7 +59,8 @@ body {
     z-index: 0;   
 }
 
-.card:hover::before {
+.card:hover::before,
+.card:focus::before {
     clip-path: circle(300px at 80% -20%);
     /* clip-path: circle(300px);
     top: -390px;
@@ -87,7 +88,8 @@ body {
     transition: all 1s ease-in;
 }
 
-.card:hover .card__image {
+.card:hover .card__image,
+.card:focus .card__image {
     padding-top: 40px;
 }
 
@@ -109,7 +111,8 @@ body {
     z-index: 1;          
 }
 
-.card:hover .card__content{
+.card:hover .card__content,
+.card:focus .card__content{
     height: 210px;
     opacity: 1;  
 }
@@ -135,7 +138,9 @@ body {
 }
 
 .card:hover .card__content-size,
-.card:hover .card__content-color{
+.card:focus .card__content-size,
+.card:hover .card__content-color,
+.card:focus .card__content-color{
     opacity: 1;
     visibility: visible;    
     transition-delay: 0.5s;
@@ -170,7 +175,8 @@ body {
     line-height: 26px;
 }
 
-.card__button-size:hover {
+.card__button-size:hover,
+.card__button-size:focus {
     background-color: #9BDC28;
     cursor: pointer;
 }
@@ -183,7 +189,8 @@ body {
     border: none;
 }
 
-.card__button-color:hover {
+.card__button-color:hover,
+.card__button-color:focus {
     cursor: pointer;
 }
 
@@ -211,18 +218,172 @@ body {
     font-weight: 600;  
     transform: translateY(50px);  /*Otherwise       margin-top: 60px;  */
     transition: all 0.7s ease-in;
+    transition: all 0.7s ease-in, background-color 0.2s ease-in;
 }
-/* .card__button:hover { 
-     cursor: pointer;     TODO 
-}*/
 
-.card:hover .card__button {
+.card:hover .card__button,
+.card:focus .card__button {
     opacity: 1;
     transform: translateY(0px);   /*Otherwise    margin-top: 10px; */
     transition-delay: 0.75s;
 }
 
-.card:active .card__button {
+.card:hover .card__button:active,
+.card:focus .card__button:active {
     background-color: #9bdc28;
     transition-delay: 0s;
+}
+
+.card__button:not(:active) {    
+    background-color: #FFF;
+    transition-delay: 0s; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card__form {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding-top: 8px;
+    padding-bottom: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s ease-in;
+}
+
+.card:hover .card__form,
+.card:focus .card__form{
+    opacity: 1;
+    visibility: visible;    
+    transition-delay: 0.5s;
+}
+
+.card__form-fieldset {
+    border: none;
+    display: flex;
+    flex-direction: row;
+}
+.card__form-title {
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-right: 10px;
+    line-height: 21px;
+    display: inline-block;
+    /* margin-right: 10px; */    
+}
+
+.card__form-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;     /*DELETEME  ?*/
+}
+
+.card__list-item {
+    position: relative;
+}
+
+.card__form-input {
+
+}
+/* .card__form-input:checked + .card__form-label::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 7px;
+    width: 16px;
+    height: 16px;
+    background-color: pink; 
+    border-radius: 50%;
+} */
+
+.card__form-label {
+    margin-left: 5px;
+  }
+
+
+.card__form-label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #131313; 
+    margin-right: 5px;
+}
+
+.card__form-label_green::before {
+    background-color: #9bdc28;
+}
+
+.card__form-label_blue::before {
+    background-color: #03a9f4;
+}
+
+.card__form-label_fuchsia::before {
+    background-color: #e91e63;
+}
+
+.card__form-label:hover::before,
+.card__form-label:focus::before{
+    border: 2px solid #ddd;
+}
+
+.card__form-label_green:active::before {
+    background-color: #aaff00;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+
+
+
+.card__form-input:checked + .card__form-label_green {
+    background-color: #aaff00; /* Цвет для выбранной радиокнопки */
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+.card__form-label_blue:active::before {
+    background-color: #05dcf8;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.card__form-label_fuchsia:active::before {
+    background-color: #e91ece;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
